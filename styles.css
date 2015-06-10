@@ -1,0 +1,110 @@
+.clearfix {
+  display: block;
+  _height: 1px;
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+}
+
+.speak {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(1px 1px 1px 1px);
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
+
+.faw-carousel-container {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.faw-carousel {
+  margin-bottom: 5px;
+  overflow: hidden;
+  position: relative;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  z-index: 0;
+}
+
+.faw-carousel-slide-container {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  height: auto !important;
+  position: relative;
+  webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  width: 200%;
+  z-index: 1;
+}
+
+.faw-carousel-slide {}
+.faw-carousel-slide.carousel-slide-dark {}
+.faw-carousel-slide.carousel-slide-light {}
+
+.faw-carousel-actions {
+  display: block;
+  z-index: 3;
+}
+
+.faw-carousel-action-btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+}
+
+.faw-carousel-action-btn-label {}
+
+.faw-carousel-indicators {
+  display: block;
+}
+
+.faw-carousel-indicators-container {}
+
+.faw-carousel-indicator {
+  background: #bbb;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: -moz-inline-stack;
+  display: inline-block;
+  height: 10px;
+  margin: 5px;
+  vertical-align: text-bottom;
+  width: 10px;
+  zoom: 1;
+}
+.faw-carousel-indicator:hover {
+  background-color: #777;
+}
+.faw-carousel-indicator.active {
+  background-color: #0073c5;
+}

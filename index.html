@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="lib/angular.js"></script>
+  </head>
+  <body data-ng-app="fawApp">
+    <faw-carousel data-carousel="page.carousel"></faw-carousel>
+
+    <script>
+      angular.module('fawServices', []);
+      angular.module('fawControllers', ['fawServices']);
+      angular.module('fawDirectives', ['fawControllers']);
+
+      angular.module('fawApp', ['fawDirectives']);
+
+      angular.module('fawControllers')
+        .controller('CarouselController', ['$scope', 'page', function ($scope, page) {
+
+          $scope.carousel = $scope.carousel || page.carousel;
+
+          $scope.singleSlideCarousel = function () {
+            return $scope.carousel.slides && $scope.carousel.slides.length == 1;
+          };
+        }])
+        .controller('CarouselActionController', ['$scope', function ($scope) {
+
+        }])
+        .controller('CarouselSlideController', ['$scope', function ($scope) {
+          $scope.displaySlide = $scope.slide || {};
+        }]);
+
+      angular.module('fawDirectives')
+        .directive('fawCarousel', [function () {
+          return {
+            controller: 'CarouselController',
+            replace: true,
+            restrict: 'E',
+            scope: {
+              carousel: '='
+            },
+            templateUrl: 'templates/carousel.html'
+          }
+        }])
+        .directive('fawCarouselActions', [function () {
+          return {
+            replace: true,
+            restrict: 'E',
+            templateUrl: 'templates/carousel-actions.html'
+          }
+        }])
+        .directive('fawCarouselActionButton', [function () {
+          return {
+            controller: 'CarouselActionController',
+            replace: true,
+            restrict: 'E',
+            scope: {
+              action: '@',
+              hiddenMobile: '@',
+              icon: '@',
+              label: '@',
+              speak: '@'
+            },
+            templateUrl: 'templates/carousel-action-button.html'
+          }
+        }])
+        .directive('fawCarouselIndicators', [function () {
+          return {
+            replace: true,
+            restrict: 'E',
+            templateUrl: 'templates/carousel-indicators.html'
+          }
+        }])
+        .directive('fawCarouselSlide', [function () {
+          return {
+            controller: 'CarouselSlideController',
+            replace: true,
+            restrict: 'E',
+            scope: {
+              slide: '='
+            },
+            templateUrl: 'templates/carousel-slide.html'
+          }
+        }])
+        .directive('fawCarouselSlidesList', [function () {
+          return {
+            replace: true,
+            restrict: 'E',
+            templateUrl: 'templates/carousel-slides-list.html'
+          }
+        }]);
+
+        angular.module('fawServices')
+          .value('page', {
+            carousel: {
+              slides: [
+                {
+                  title: 'Slide 1',
+                  light: true
+                },
+                {
+                  title: 'Slide 2',
+                  light: false
+                },
+                {
+                  title: 'Slide 3',
+                  light: false
+                }
+              ]
+            }
+          });
+    </script>
+  </body>
+</html>
